@@ -1,14 +1,14 @@
 from django.conf import settings
-from django.conf.urls import include, url
+from django.urls import include, path
 from django.conf.urls.static import static
 from django.contrib.gis import admin
 
 admin.autodiscover()
 
 urlpatterns = [
-    url(r"^admin/", admin.site.urls),
-    url(r"", include("naturebank.urls")),
-    url(r"", include("django.contrib.flatpages.urls")),
+    path("admin/", admin.site.urls),
+    path("", include("naturebank.urls")),
+    path("", include("django.contrib.flatpages.urls")),
 ]
 
 if settings.DEBUG:

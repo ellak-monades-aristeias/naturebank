@@ -4,7 +4,6 @@ from django.contrib.gis.shortcuts import render_to_kml
 from django.db.models import Q
 from django.http import Http404, HttpResponse
 from django.shortcuts import render
-from django.template import RequestContext
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
@@ -29,23 +28,23 @@ filter_keys = (
 
 
 def frontpage(request):
-    return render(request, "frontpage.html", {}, context=RequestContext(request))
+    return render(request, "frontpage.html", {})
 
 
 def info(request):
-    return render(request, "info.html", {}, context=RequestContext(request))
+    return render(request, "info.html", {})
 
 
 def info_usage(request):
-    return render(request, "info_usage.html", {}, context=RequestContext(request))
+    return render(request, "info_usage.html", {})
 
 
 def poweredby(request):
-    return render(request, "poweredby.html", {}, context=RequestContext(request))
+    return render(request, "poweredby.html", {})
 
 
 def tos(request):
-    return render(request, "tos.html", {}, context=RequestContext(request))
+    return render(request, "tos.html", {})
 
 
 class BiotopeListView(ListView):
@@ -228,7 +227,7 @@ class SpeciesDetailView(DetailView):
 def index(request):
     """The view which returns the index page of the project"""
 
-    return render(request, "index.html", {}, context=RequestContext(request))
+    return render(request, "index.html", {})
 
 
 layers = {

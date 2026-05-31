@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.urls import path
 
 from naturebank import views
 from naturebank.models import Biotope, Species
@@ -16,30 +16,30 @@ species_list = {
 }
 
 urlpatterns = [
-    url(r"^biotopes/$", views.BiotopeListView.as_view(), name="biotope_list"),
-    url(
-        r"^biotopes/d/(?P<pk>\d+)/$",
+    path("biotopes/", views.BiotopeListView.as_view(), name="biotope_list"),
+    path(
+        "biotopes/d/<int:pk>/",
         views.BiotopeDetailView.as_view(),
         name="biotope_detail",
     ),
-    url(
-        r"^biotopes/c/(?P<site_code>[^/]+)/$",
+    path(
+        "biotopes/c/<str:site_code>/",
         views.BiotopeDetailView.as_view(),
         name="biotope_detail",
     ),
-    url(
-        r"^biotopes/b/(?P<pk>\d+)/$",
+    path(
+        "biotopes/b/<int:pk>/",
         views.BiotopeDetailBriefView.as_view(),
         name="biotope_brief",
     ),
-    url(r"^biotope_list_filter/(?P<filter_name>[^/]+)/$", views.biotope_list_filter),
-    url(r"^species/$", views.SpeciesListView.as_view(), name="species_list"),
-    url(
-        r"^species/d/(?P<pk>\d+)/$",
+    path("biotope_list_filter/<str:filter_name>/", views.biotope_list_filter),
+    path("species/", views.SpeciesListView.as_view(), name="species_list"),
+    path(
+        "species/d/<int:pk>/",
         views.SpeciesDetailView.as_view(),
         name="species_detail",
     ),
-    url(r"^(?P<layer>[^/]+)/kml/$", views.kml, {}),
-    url(r"^bound/$", views.bound, {}),
-    url(r"^settlements/$", views.settlements_kml, {}),
+    path("<str:layer>/kml/", views.kml, {}),
+    path("bound/", views.bound, {}),
+    path("settlements/", views.settlements_kml, {}),
 ]

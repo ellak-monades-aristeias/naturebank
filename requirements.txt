@@ -1,2 +1,2 @@
-django>=3.2,<4
-django-filter>=2,<22
+django>=5.2,<5.3
+django-filter>=25,<26
